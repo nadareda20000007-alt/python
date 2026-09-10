@@ -1,0 +1,16 @@
+**• User Manual that illustrates how to use the code:**
+
+run in the terminal 
+ros2 run rov_control_system navigation_node
+
+and in another terminal 
+
+ros2 run rov_control_system  joystick_node
+
+or 
+
+in one terminal
+
+ros2 run rov_control_system  rov_control.launch
+
+then use the arrows in the keyboaed as if they are the joystick
