@@ -1,0 +1,13 @@
+THIS IS THE MUNALE OF THE CODE , WHAT IT DOES AND THE LIBRARIS USED IN IT 
+
+It simulates health monitoring for an 8-thruster system by generating random values for voltage, temperature, CPU
+All you need is one to do it to run the code
+It keeps checking the health when random numbers are added and if any error occurs of the health it pauses all the 8-thrusters for 5 seconds
+ I used import time for timing delays
+ import random to add random numbers for the voltage, temperature, CPU
+import os alongside import sys for platform detection and to exit the project completely and safely
+ To enable non-blocking keyboard input across operating systems and  to know what key was pressed
+i used key detection using import msvcrt on Windows and import select, import termios, import tty on macOS or Linux
+ allowing the simulation to run until the user presses 'q' to quit
+
+I used Gemini to help me in many concepts and in understanding them.
