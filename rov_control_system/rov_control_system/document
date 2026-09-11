@@ -1,0 +1,74 @@
+# rov_control_system
+
+***###smoothing.py***_
+
+It contains two kinds of smoothing (linear / exponential).
+They calculate values as floats and you can change their speed by changing (step_size / alpha)
+
+The step() function : tracks joystick movement by comparing its previous and current values, so it can determine how the ROV speed should change
+
+The switch_strategy() function : allows you to choose the smoothing strategy you want to use
+
+***###smoothing_interface.py***_
+
+Allows this class to be treated like a function, making it easy to call
+
+###pmw_mapper.py
+turn the [-1 , 1]
+
+into real numbers the motor can take as speed
+
+###joystick.py
+I used the same code from the OOP task to detect which key is pressed.
+
+this class It includes a cleanup function to clear the terminal so there aren’t any leftover values
+ get_place function checks where the joystick was last placed 
+
+ get_button calls the function that identifies which key is being pressed  (_*poll_*keyboard)
+
+###navigation.py
+It has functions that call all the functions made in other classes and it prints the returned values.
+
+All the actual logic: map -> smooth -> apply
+
+###joystick.node.py
+
+this class subscribe to topic joystick take the published values from the joystick_node
+
+and after it  applay the  logic: map -> smooth -> apply
+
+it publish this values to topic called thruster_pwm
+
+and print the values
+
+###navigation_node.py
+
+It contains a node called joystick_node that publishes the joystick position to a topic called joystick by reading the values of the pressed keys.
+
+if you what to change the smoothing strategy
+
+```python
+        # Navigation Service with smoothing strategy
+        self.service = NavigationServiceImpl(
+            self.thruster_ids, 
+            smoothing_strategy="exponential", 
+            alpha=0.2
+        )
+
+```
+
+Set (smoothing_strategy) to the strategy you want.
+
+If you want linear smoothing 
+
+change the smoothing_strategy to = “linear”
+
+and change (alpha) to (step_size).
+
+example:
+ alpha: float = 0.2  for exponential
+
+step_size: float = 20.0  for  linear
+
+This project includes only 2 strategies: "linear" and "exponential"
+
